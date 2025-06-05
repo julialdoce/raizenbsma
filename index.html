@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAIZEN BSMA - Hub Corporativo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="admin-bar">
+        <div>
+            <span>🔧 Modo Administrador</span>
+            <span id="lastUpdate">Última atualização: Hoje, 14:30</span>
+        </div>
+        <div class="admin-controls">
+            <button class="admin-btn" onclick="toggleEditMode()">✏️ Editar</button>
+            <button class="admin-btn" onclick="saveChanges()">💾 Salvar</button>
+            <button class="admin-btn" onclick="viewHistory()">📈 Histórico</button>
+            <button class="admin-btn" onclick="publishChanges()">🚀 Publicar</button>
+        </div>
+    </div>
+
+    <header class="header">
+        <button class="edit-btn" onclick="editHeader()">✏️ Editar Cabeçalho</button>
+        <h1 contenteditable="false" id="mainTitle">🏢 RAIZEN BSMA</h1>
+        <p class="subtitle" contenteditable="false" id="subtitle">Business Solutions & Management Applications</p>
+    </header>
+
+    <div class="container">
+        <div class="news-banner" id="newsBanner">
+            <div>
+                <strong>🔥 Novidade:</strong> <span contenteditable="false" id="newsText">Nova campanha "Raizen Verde" em andamento - Participe!</span>
+            </div>
+            <button class="close-btn" onclick="closeBanner()">&times;</button>
+        </div>
+
+        <div class="quick-actions">
+            <div class="quick-action" onclick="quickAction('emergency')">
+                <div class="icon">🚨</div>
+                <div class="title">Emergência</div>
+                <div class="subtitle">Procedimentos rápidos</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div class="quick-action" onclick="quickAction('training')">
+                <div class="icon">🎓</div>
+                <div class="title">Treinamentos</div>
+                <div class="subtitle">Cursos disponíveis</div>
+                <div class="status-indicator alert"></div>
+            </div>
+            <div class="quick-action" onclick="quickAction('reports')">
+                <div class="icon">📊</div>
+                <div class="title">Relatórios</div>
+                <div class="subtitle">Métricas e KPIs</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div class="quick-action" onclick="quickAction('calendar')">
+                <div class="icon">📅</div>
+                <div class="title">Agenda</div>
+                <div class="subtitle">Eventos e prazos</div>
+                <div class="status-indicator inactive"></div>
+            </div>
+        </div>
+
+        <div class="sections-grid" id="sectionsGrid">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3 class="section-title">📂 Documentos Importantes</h3>
+                    <div class="section-actions">
+                        <button class="action-btn" onclick="editSection(this)">✏️</button>
+                        <button class="action-btn" onclick="deleteSection(this)">🗑️</button>
+                    </div>
+                </div>
+                <div class="content-area">
+                    <ul>
+                        <li><a href="#" class="doc-link">📄 Planilha de Controle - Junho 2025</a></li>
+                        <li><a href="#" class="doc-link">📊 Relatório Mensal - Maio 2025</a></li>
+                        <li><a href="#" class="doc-link">📑 Procedimentos Operacionais Padrão</a></li>
+                    </ul>
+                </div>
+                <div class="update-info">
+                    <span>Por: Administração</span>
+                    <span>Hoje, 10:30</span>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-header">
+                    <h3 class="section-title">🛡️ EPI e Estoque</h3>
+                    <div class="section-actions">
+                        <button class="action-btn" onclick="editSection(this)">✏️</button>
+                        <button class="action-btn" onclick="deleteSection(this)">🗑️</button>
+                    </div>
+                </div>
+                <div class="content-area">
+                    <p>Controle de EPIs disponíveis e sistema de requisição:</p>
+                    <div class="quick-links">
+                        <a href="#" class="quick-link">🔍 Consultar Estoque</a>
+                        <a href="#" class="quick-link">🔄 Solicitar Reposição</a>
+                        <a href="#" class="quick-link">📝 Relatar Problemas</a>
+                    </div>
+                </div>
+                <div class="update-info">
+                    <span>Por: Segurança do Trabalho</span>
+                    <span>Ontem, 16:45</span>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-header">
+                    <h3 class="section-title">🌐 Links Úteis</h3>
+                    <div class="section-actions">
+                        <button class="action-btn" onclick="editSection(this)">✏️</button>
+                        <button class="action-btn" onclick="deleteSection(this)">🗑️</button>
+                    </div>
+                </div>
+                <div class="content-area">
+                    <div class="links-grid">
+                        <a href="#" class="system-link">📊 Sistema de Gestão</a>
+                        <a href="#" class="system-link">📧 Webmail Corporativo</a>
+                        <a href="#" class="system-link">👥 Portal RH</a>
+                        <a href="#" class="system-link">📅 Calendário Empresarial</a>
+                    </div>
+                </div>
+                <div class="update-info">
+                    <span>Por: TI</span>
+                    <span>02/06, 14:20</span>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-header">
+                    <h3 class="section-title">📢 Avisos e Comunicados</h3>
+                    <div class="section-actions">
+                        <button class="action-btn" onclick="editSection(this)">✏️</button>
+                        <button class="action-btn" onclick="deleteSection(this)">🗑️</button>
+                    </div>
+                </div>
+                <div class="content-area">
+                    <div class="notice">
+                        <strong>❗ Manutenção Programada</strong>
+                        <p>Sistema ficará indisponível no sábado, 08/06, das 8h às 12h.</p>
+                    </div>
+                    <div class="notice">
+                        <strong>🎉 Evento Corporativo</strong>
+                        <p>Confira a programação da Semana da Segurança no link abaixo.</p>
+                    </div>
+                </div>
+                <div class="update-info">
+                    <span>Por: Comunicação</span>
+                    <span>01/06, 09:15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-add" onclick="addNewSection()" title="Adicionar Nova Seção">+</button>
+
+    <!-- Modal para adicionar/editar seções -->
+    <div class="modal" id="sectionModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Nova Seção</h2>
+            <form id="sectionForm">
+                <div class="form-group">
+                    <label for="sectionIcon">Ícone:</label>
+                    <select id="sectionIcon">
+                        <option value="📂">📂 Documentos</option>
+                        <option value="🛡️">🛡️ EPI/Segurança</option>
+                        <option value="🌐">🌐 Links</option>
+                        <option value="📢">📢 Avisos</option>
+                        <option value="👥">👥 RH</option>
+                        <option value="📊">📊 Relatórios</option>
+                        <option value="⚡">⚡ Operações</option>
+                        <option value="🏭">🏭 Produção</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sectionTitle">Título:</label>
+                    <input type="text" id="sectionTitle" placeholder="Digite o título da seção">
+                </div>
+                <div class="form-group">
+                    <label for="sectionContent">Conteúdo:</label>
+                    <textarea id="sectionContent" placeholder="Descreva o conteúdo da seção..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Criar Seção</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Raizen BSMA - Sistema de Gestão Corporativa</p>
+        <p>Última sincronização: <span id="syncTime">03/06/2025 14:30:45</span></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
